@@ -1,13 +1,7 @@
-gem "dotenv-rails"
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 gem "letter_opener", group: :development
-gem "webmock", group: :test
-gem "mocha", group: :test
 
 after_bundle do
   git add: "."
@@ -20,34 +14,9 @@ after_bundle do
     "authentication_provider:string:index",
     "authentication_uid:string:index"
 
-  rails_command "solid_cache:install"
-
-  rails_command "solid_queue:install"
-
-  rails_command "solid_cable:install"
-
   environment "config.action_mailer.delivery_method = :letter_opener", env: "development"
 
   environment "config.action_mailer.perform_deliveries = true", env: "development"
-
-  insert_into_file "config/database.yml", after: "production:\n" do <<~YAML.indent(2)
-      primary:
-        <<: *default
-        database: storage/production.sqlite3
-      cache:
-        <<: *default
-        database: storage/production_cache.sqlite3
-        migrations_paths: db/cache_migrate
-      queue:
-        <<: *default
-        database: storage/production_queue.sqlite3
-        migrations_paths: db/queue_migrate
-      cable:
-        <<: *default
-        database: storage/production_cable.sqlite3
-        migrations_paths: db/cable_migrate
-    YAML
-  end
 
   insert_into_file "app/models/user.rb", after: "class User < ApplicationRecord\n" do <<~RUBY.indent(2)
       validates :authentication_provider, presence: true
