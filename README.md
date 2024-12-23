@@ -17,7 +17,7 @@ This template is designed for personal use and open-source projects. It provides
 
 ## Usage
 ```sh
-rails new <app_name> -j importmap -c tailwind -d sqlite3 -m https://raw.githubusercontent.com/bastos/rails-template/refs/heads/main/template.rb
+rails new <app_name> -c tailwind -m https://raw.githubusercontent.com/bastos/rails-template/refs/heads/main/template.rb
 ```
 
 ## License
