@@ -2,7 +2,7 @@
 
 This template is designed for personal use and open-source projects. It provides a quick start for Rails applications with essential features pre-configured, requiring minimal setup.
 
-- **Database**: SQLite3 for simplicity and ease of setup
+- **Database**: Your choice of SQLite (default) or PostgreSQL
 - **Defaults**:
   - Solid Cache for efficient caching
   - Solid Queue for background job processing
@@ -19,6 +19,8 @@ This template is designed for personal use and open-source projects. It provides
 ```sh
 rails new <app_name> -c tailwind -m https://raw.githubusercontent.com/bastos/rails-template/refs/heads/main/template.rb
 ```
+
+During setup, the template will ask if you want to use PostgreSQL instead of the default SQLite database.
 
 ## License
 
